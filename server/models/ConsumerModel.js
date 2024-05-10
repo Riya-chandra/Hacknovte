@@ -17,10 +17,10 @@ const ConsumerSchema = new mongoose.Schema({
         required:true,
         unique:true,
     },
-    // token: {
-    //     type:String,
+    token: {
+        type:String,
 
-    // },
+    },
     picture: {
         type:String,
     },

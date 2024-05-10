@@ -1,6 +1,6 @@
 const mongoose=require("mongoose")
 const usersData=require("./users.js")
-const user=require("../models/users.js")
+const user=require("./models/users.js")
 const MONGO_URL = "mongodb://127.0.0.1:27017/hackpro"
 mongoose.connect(MONGO_URL).then(() => {
 

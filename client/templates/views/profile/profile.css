@@ -1,0 +1,126 @@
+body{
+    margin: 0;
+    padding: 5rem;
+    background-color:#000000;
+}
+h1{
+    font-size: 5rem;
+    color:#e51b1b;
+}
+span{
+    color:red;
+}
+label{
+    font-size: 2rem;
+    color: #e51b1b;
+}
+.container{
+    margin: auto;
+    width: 50%;
+    /* margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); */
+    width: 800px;
+    height: 800px;
+    border-radius:15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40rem;
+    /* border: 3px solid red; */
+    flex-direction: column;
+   border:2px solid white;
+   box-shadow: 10px 10px 15px 10px #88888845;
+   
+}
+.profilePicture{
+    /* border: 2px solid rgb(255, 93, 93); */
+    border-radius: 8rem;
+    height: 10rem;
+    
+
+}
+
+img{
+    height: 100px;
+    width: 100px;
+    background-color: #050303;
+    border-radius: 50%;
+  }
+
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    border-radius: 20px;
+  }
+
+.create a{
+    color: #e51b1b;
+    text-decoration: none;
+    cursor: pointer;
+    font-size:2rem;
+}
+.connect{
+    text-decoration:none;
+    color:white;
+}
+.tran{
+    background-color:black;
+    text:white;
+}
+.name{
+   color:white; 
+}
+.transactions a{
+
+    color: #e51b1b;
+    text-decoration: none;
+    cursor: pointer; 
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    border-radius: 20px;
+}
+.trn{
+    margin: auto;
+  width: 50%;
+  
+  padding: 10px;
+    width:800px;
+    height:800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    flex-direction: column;
+    background-color:black;
+    border-radius: 20px;
+    border:2px solid white;
+    box-shadow: 10px 10px 15px 10px #88888845 ; 
+   
+       
+} 
+
+
+
+ .trn.create button a{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+    border-radius: 20px;
+} 
+/* button{
+    
+} */

@@ -1,17 +1,10 @@
-// const express=require("express");
-// const app=express();
-// const ejs=require("ejs");
-// const mongoose=require("mongoose");
-// const port = process.env.PORT || 3000;
-// const OpenAIApi =require("openai")
-// const path=require("path");
 
 // const multer=require("multer");
 // const UserModel = require('./models/users');
 // const ConsumerModel = require('./models/ConsumerModel')
 // const TransactionModel = require('./models/TransactionModel');
 // const passport = require('passport');
-// const oauth2Strategy=require("passport-google-oauth2").Strategy;
+const oauth2Strategy=require("passport-google-oauth2").Strategy;
 // //const session = require('express-session');
 // const VidModel = require('./models/VidModel');
 // // const clientId=("978914627210-ik9a9kr6v8t2h5tc0v7tqp0tidbc9aft.apps.googleusercontent.com");
@@ -43,11 +36,12 @@ const session = require('express-session');
 const yt = require('./yt')
 const path = require('path');
 //require('./conf/passport')(passport); //path change krna bbkii h
-//var MongoClient = require('mongodb').MongoClient;  
+var MongoClient = require('mongodb').MongoClient;  
 
 //yoUTUBE API
 const auth = require('./auth');
 const OAuth2Data = require('./client_secret.json');
+
 const { google } = require('googleapis');
 var title, description;
 var tags = [];
@@ -57,20 +51,38 @@ const fs = require('fs');
 const port = process.env.PORT || 3000;
 const mongoose = require('mongoose');
 const UserModel = require('./models/users');
-const ConsumerModel = require('./models/ConsumerModel')
-//const { default: jwtDecode } = require('jwt-decode');
+
+const { default: jwtDecode } = require('jwt-decode');
 const { oauth2 } = require('googleapis/build/src/apis/oauth2');
 
+
+// //otp var
+// const otp=require("./models/otpModel")
+// app.post("/send-mail-verification",sendMailVerification)
+// const nodemailer=require("nodemailer");
 const client = require('./clients')
 const db = require('./db');
 const TransactionModel = require('./models/TransactionModel');
 const VidModel = require('./models/VidModel');
+const ConsumerModel = require('./models/ConsumerModel')
+
+
 //const { default: OpenAI } = require('openai');
-// const { apikeys } = require('googleapis/build/src/apis/apikeys');
-// const { content } = require('googleapis/build/src/apis/content');
+const { apikeys } = require('googleapis/build/src/apis/apikeys');
+const { content } = require('googleapis/build/src/apis/content');
 //openai integration
 //const dotenv = require('dotenv').config();
 const OpenAI=require("openai")
+
+//otp
+// const otpModel=require("./otpModel")
+// const nodemailer=require("nodemailer")
+// const passwordReset=require("./PasswordReset")
+// const bcrypt=require("bcrypt")
+
+
+
+
 
 
 
@@ -90,38 +102,112 @@ app.use(express.static(client_path));
 app.use(express.static(path.join(__dirname, "./videos")))
 app.set("views", client_path);
 app.set("view engine", "ejs");
-//app.use(cookieParser())
+app.use(cookieParser())
+const user=require("./models/users.js");
+const { data } = require('../init/users.js');
 
+//const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-// if (!Configuration) {
-//   console.error("Configuration class not found in openai package.");
-//   process.exit(1); // Exit the process with an error code
+// Access your API key as an environment variable (see "Set up your API key" above)
+// const genAI = new GoogleGenerativeAI("AIzaSyCqvkOaKaZHvRNI6ZpglRXF4jQenwlCCXk");
+
+// async function run() {
+//   const generationConfig = {
+//     stopSequences: ["red"],
+//     maxOutputTokens:30,
+//     temperature: 0.9,
+//     topP: 0.1,
+//     topK: 16,
+//   };
+  
+ 
+  // For text-only input, use the gemini-pro model
+//   const model = genAI.getGenerativeModel({ model: "gemini-pro",generationConfig});
+
+//   const prompt = "generate me titles on funny content"
+
+//   const result = await model.generateContent(prompt);
+//   const response = await result.response;
+//  const text=response.text();
+//   console.log(text);
 // }
-// if (!process.env.OPEN_AI_KEY) {
-//   console.error("OPEN_AI_KEY environment variable is not set.");
-//   process.exit(1); // Exit the process with an error code
-// }
 
+// run();
+const bodyParser=require("body-parser");
+const nodemailer=require("nodemailer");
+const otpGenerator=require("otp-generator");
 
-
-
-
-
-
-const openai=new OpenAI({
-  apiKey:process.env.OPEN_AI_KEY
+const transporter = nodemailer.createTransport({
+  service: 'hackpro1029@gmail.com', // Update with your email service provider
+  auth: {
+    user: 'email@gmail.com', // Update with your email address
+    pass: 'plmoknijb' // Update with your email password or app password if using Gmail
+  }
 });
-const openFun=async()=>{
-  const chatCompletion=await openai.chat.completions.create({
-    model:"gpt-3.5-turbo",
-    messages:[{"role":"user","content":"hastags for funny content",}],
-    max_tokens:5
+app.post('/sendOTP', (req, res) => {
+  const { email } = req.body;
+  const otp = otpGenerator.generate(6, { digits: true, alphabets: false, upperCase: false, specialChars: false });
+  const mailOptions = {
+    from: 'hackpro1029@gmail.com', // Update with your email address
+    to:"sdfv",
+    subject: 'OTP Verification',
+    text: `Your OTP for verification is: ${otp}.Please enter to validate transcation from your account`
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error occurred:', error);
+      res.status(500).send('Error sending OTP');
+    } else {
+      console.log('Email sent:', info.response);
+      res.status(200).send('OTP sent successfully');
+    }
+  })
+})
 
- } );
-  console.log(chatCompletion.choices[0].message);
 
-}
-openFun();
+
+
+
+
+// const openai=new OpenAI({
+//   apiKey:process.env.OPEN_AI_KEY
+// });
+// const openFun=async()=>{
+//   const chatCompletion=await openai.chat.completions.create({
+//     model:"gpt-3.5-turbo",
+//     messages:[{"role":"user","content":"hastags for funny content",}],
+//     max_tokens:30
+
+//  } );
+//   console.log(chatCompletion.choices[0].message);
+// }
+// openFun();
+
+
+
+
+app.get("/becomeclient",(req,res)=>{
+  res.render("becomeclient");
+})
+// app.post("/home/:id",(req,res)=>{
+//   res.redirect("index")
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.get("/home", (_, res) => {
   if (console.error()) {
@@ -168,8 +254,13 @@ app.post("/register", async (req, res) => {
 app.post("/auth/callback", (req, res) => {
   let data = jwtDecode(req.body.credential);
   console.log(data);
+  console.log(req.body);
   res.redirect('/home');
 });
+app.get("/google/callback",(req,res)=>{
+res.send("hello")
+})
+
 
 //Sign in 
 app.get("/signin", (_, res) => {
@@ -316,6 +407,36 @@ app.post('/upload/:id', upload.single('video'), (req, res) => {
     })
 
 })
+// const sendOTPverficationEmail=async({_id,email})=>{
+// try{
+//   const otp=`${Math.floor(1000+Math.random()*9000)}`;
+// }catch(error){
+
+//   const mailOptions={
+//     from:,
+//     to:email,
+//     subject:"verify User before uploadation",
+//     html:`<p> Enter <b>${otp}</b> in the application to verfiy the service provider of your youtube video for uploadation.
+//     this expires in 2 mins`
+  
+//   };
+//   const saltRounds=10;
+// }
+// };
+
+
+app.delete("/profile/:id",async(req,res)=>{
+  t.merchant_vid = vid._id
+  let deleteListing=await user.findByIdAndDelete(vid_id);
+  console.log(deleteListing)
+  res.render("profile/profile")
+  //res.redirect(/profile/:id/txn/create)
+})
+
+
+
+
+
 
 app.get('/profile/:id/txn/create', (req, res) => {
   const uid = req.params.id
@@ -374,6 +495,7 @@ app.get('/profile/:id', (req, res) => {
     })
     .catch(err => res.redirect(`404/usernotfound/${uid}`));
 })
+
 //app.get("/profile/:id",async(req,res)=>{
   // let db2=new ConsumerModel({
   //     name:"riya chandra",
@@ -384,22 +506,51 @@ app.get('/profile/:id', (req, res) => {
   //     user_type:"editor",
   //     //transactions:""
   // });
-//   let db2=new ConsumerModel({
-//     name:"sristy",
-//    // uid:"",
-//     email:"shristy@gmail.com",
-//    // token:"",
-//    // picture:"https://static.toiimg.com/photo/msid-53891743,width-96,height-65.cms",
+  
+// app.post("/profile/:id",async(req,res)=>{
+
+//   let db2= new ConsumerModel({
+//     name:"satyarupa",
+//     uid: data.id,
+//     email:"satyarupasingh77@gmail.com",
+//    token:"",
+//    picture:"https://learnopencv.com/wp-content/uploads/2016/05/average-woman-face.jpg",
 //     user_type:"editor",
-//     //transactions:""
+//     transactions:""
 //   });
+  
+//   await db2.save();
+//   console.log("sample was saved");
+//   res.send("successful");
+//   })app.get("/search", async (req, res) => {
+  app.get("/profile/:id", (req, res) => {
+    let db2 = new ConsumerModel({
+      name: "satyarupa",
+      uid: "data.id", 
+      email: "satyarupasingh77@gmail.com",
+       token: "",
+      picture: "https://learnopencv.com/wp-content/uploads/2016/05/average-woman-face.jpg",
+      user_type: "editor",
+      transactions: [],
+    });
+  
+    db2.save()
+      .then(savedData => {
+        console.log("Consumer data was saved:", savedData);
+        res.send("Successful");
+      })
+      .catch(error => {
+        console.error("Error saving consumer data:", error);
+        res.status(500).send("Error saving consumer data");
+      });
+  });
+  
 
-// await db2.save();
-// console.log("sample was saved");
-// res.send("successful");
+  
 
-// });
-
+  
+  
+   
 
 
 app.get('/search', (req, res) => {
@@ -415,23 +566,57 @@ app.get('/search', (req, res) => {
     })
     .catch(err => res.status(500).send('Internal Server Error'))
 })
-// app.get("/search",async(req,res)=>{
-//   let db2=new ConsumerModel({
-//     name:"sristy",
-//     uid: data.id,
-//     email:"shristy@gmail.com",
-//    // token:"",
-//    // picture:"https://static.toiimg.com/photo/msid-53891743,width-96,height-65.cms",
-//     user_type:"editor",
-//     //transactions:""
-//   });
-  
-//   await db2.save();
-//   console.log("sample was saved");
-//   res.send("successful");
-//})
+app.get("/search",(req,res)=>{
+  ConsumerModel.find()
+  .exec()
+  .then(docs => {
+    const filtered = docs
+    .filter(d => {
+      return d.name.startsWith(searchText)
+    })
+    res.render('search/search', { entries: filtered, searchText })
+  })
+  .catch(err => res.status(500).send('Internal Server Error'))
+})
 
-  
+
+app.get("/editor",(req,res)=>{
+ res.render("editor/editor",{user})
+})
+
+
+app.post("/profile/:id",async(req,res)=>{
+
+try{
+  const db2=new ConsumerModel({
+    name:"sristy",
+    uid: data.id,
+    email:"shristy@gmail.com",
+   token:"",
+   picture:"https://learnopencv.com/wp-content/uploads/2016/05/average-woman-face.jpg",
+    user_type:"editor",
+    transactions:"zxc.mp4"
+  });
+
+
+await db2.save();
+console.log("sample was saved");
+res.send("successful");
+}catch(error){
+  console.error("error saving ",error);
+  res.status(500).send("error in asving")
+}
+
+})
+
+
+
+
+
+
+  app.get("/searchpge",(req,res)=>{
+    res.render("search_page/search")
+  })
 
 
 
@@ -486,6 +671,12 @@ app.post('/apply/:tid', upload.single('video'), (req, res) => {
       }).catch(err => res.status(500).send(err.toString()))
     }).catch(err => res.status(500).send(err.toString()))//res.redirect('/404/usernotfound/' + uid))
 })
+
+app.get("/show",(req,res)=>{
+  res.render("show/show")
+})
+
+
 
 
 app.get('/video/download/:id', (req, res) => {

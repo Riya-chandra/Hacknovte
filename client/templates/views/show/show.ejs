@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <form method="POST" action="/show" enctype="multipart/form-data"><button> View hidden video</button>
+        <!-- <input type="file" name="file" required> -->
+        <div class="transactions">
+            <% transactions && transactions.forEach(t => { %>
+                <div onclick="window.location.href='<%- user.uid %>/transaction/<%- t._id %>'">
+                    <div class="name"><%= t.name %></div>
+                    <div class="name"><%= t.description %></div>
+    
+                    <div> 
+                        <a class="recruit btn" href="/apply/< t._id %>">Apply</a>
+                        <a class="btn" href="/video/download/< t.consumer_vid._id %>">Download</a>
+                        <a href="recruit btn" href="">Delete</a>
+                    </div>
+                </div> 
+            <% }) %> 
+        </div> 
+</div>
+</body>
+</html>

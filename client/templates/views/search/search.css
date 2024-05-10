@@ -1,43 +1,98 @@
-.card {
-    padding: 1em;
-    display: flex;
-    gap: 2em;
-
-    background: white;
-    border-radius: 1em;
-}
-
 body {
-    background-color: var(--bg-color);
-}
-
-.cardPic > img {
-    width: 4em;
-    height: 4em;
-    border-radius: 100%;
-}
-
-.cardContent {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
-
-.recruit {
-    background: var(--red-accent-color);
-    color: white;
-    padding: 0.6em 1em;
-    border-radius: 0.2em;
-    text-decoration: none;
-    display: inline-block;  
-}
-
-.recruit:hover {
-    filter: brightness(80%);
+    font-family: Arial, sans-serif;
+    {% comment %} background-color:black; {% endcomment %}
 }
 
 .entries {
+    margin-left:10px
     display: flex;
-    flex-direction: column;
-    gap: 1em;
+    flex-wrap: wrap;
+    /* justify-content; */
+    margin-top: 20px;
 }
+
+.card {
+    width: 300px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 10px rgba(39, 37, 37, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    background-color:black;
+    margin-left:20px;
+}
+
+.cardPic {
+    text-align:center;
+}
+
+.cardPic img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+}
+
+.cardContent {
+    padding: 20px;
+}
+
+.cardContent input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.recruit {
+
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    background-color:red;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.recruit:hover {
+    background-color: black;
+}
+
+/* Style for the search box */
+.example {
+    margin:30px auto;
+    max-width: 400px;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#searchBox {
+    flex: 1; 
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+#searchButton {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    background-color:red;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: black;
+}
+   
+search

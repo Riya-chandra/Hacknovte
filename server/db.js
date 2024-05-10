@@ -1,6 +1,6 @@
 const ConsumerModel = require("./models/ConsumerModel")
 const TransactionModel = require("./models/TransactionModel")
-//const UserModel=require("./models/users")
+const UserModel=require("./models/users")
 module.exports= {fetchUserData, fetchPopulatedUserData}
 
 function getUserDataQuery(uid) {

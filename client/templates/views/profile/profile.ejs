@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,43 +14,159 @@
     <div class="container">
         <h1>P<span>rofile.</span></h1>
         <div class="profilePicture">
-            <img src="<%= user.picture  %>">
+            <img src="< user.picture  %>">
         </div>
         
             
                 <div class="initial-scale">
-                  <label for="name">Name:</label>  <%= user.name %>
+                  <label for="name">Name:</label>  user.name %>
                 </div>
                 <div class="initial-scale">
-                   <label for="name">Email:</label> <%= user.email %>
+                   <label for="name">Email:</label> < user.email %>
                 </div>
                 <div>
-                    <label for="name"><a href="mailto:<%=user.email%>" class="btn btn-danger">Connect with me:</a></label>
+                    <label for="name"><a href="mailto:=user.email%>" class="btn btn-danger">Connect with me:</a></label>
                 </div>
             
+<
+            < <div id="actionPanel">
+                <a id="edit" href="/profile/<= user.uid %>/edit">Edit</button>
+                <button id="signOut">Sign Out</button>
+            </div> -->
+        
+    <!-- </div>
+    <div class="trn">
+        <div class="create">
+           <button> <a href="<= user.uid %>/txn/create">Create Transaction</a></button> 
+        </div>
+        <div class="transactions">
+            < transactions && transactions.forEach(t => { %>
+                <div onclick="window.location.href='<- user.uid %>/transaction/< t._id %>'">
+                    <div><= t.name %></div>
+                    <div>< t.description %></div>
+                    <div>
+                        <a class="recruit btn" href="/apply/<= t._id %>">Apply</a>
+                        <a class="btn" href="/video/download/<= t.consumer_vid._id %>">Download</a>
+                        <a class="recruit btn"href="#">Delete</a>
+                    </div>
+                </div> 
+            }) %>
+        </div> -->
+    <!-- </div>
 
-            <!-- <div id="actionPanel">
-                <a id="edit" href="/profile/<%= user.uid %>/edit">Edit</button>
+    <script>
+
+        (function () {
+            let user = '<- user ? JSON.stringify(user) : "" %>'
+            user = user ? JSON.parse(user) : null
+            setGlobalUserData(user)
+            
+            const session = checkSessionExists()
+            if (!session || session.uid != user.uid) {
+                document.getElementById('actionPanel').remove()
+            }
+        })()
+
+        document.onload = () => {
+            document.getElementById('signOut').onclick = () => {
+                removeSession()
+                window.location.href = "/profile/= user.uid %>"
+            }
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html> --> 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="profile.css">
+     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"> -->
+
+   
+
+     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>P<span>rofile.</span></h1>
+        <div class="profilePicture">
+             <img src="<%= user.picture  %>"> 
+        </div>
+        
+            
+                <div class="initial-scale">
+                    <label for="name" >Name:</label>  
+                   <input type="text" id="fname" name="firstname"value="<%= user.name %>"placeholder="Your name..">
+                </div>
+                <div class="initial-scale">
+                   <label for="Email">Email:</label>
+                   <input type="text" id="Email" value="<%=user.email%>" placeholder="Email">
+                </div>
+                <div>
+                    <label for="name"><a href="mailto:<%=user.email%>" class="connect">Connect with me:</a></label>
+                </div>
+
+              
+             
+            
+<!-- 
+            <div id="actionPanel">
+                <a id="edit" href="/profile/<= user.uid %>/edit">Edit</button>
                 <button id="signOut">Sign Out</button>
             </div> -->
         
     </div>
     <div class="trn">
         <div class="create">
-           <button> <a href="<%= user.uid %>/txn/create">Create Transaction</a></button> 
+            <button class="tran"> <a href="<%= user.uid %>/txn/create" style="background-color:black; ">Create Transaction</a></button> 
         </div>
-        <div class="transactions">
-            <% transactions && transactions.forEach(t => { %>
-                <div onclick="window.location.href='<%- user.uid %>/transaction/<%- t._id %>'">
-                    <div><%= t.name %></div>
-                    <div><%= t.description %></div>
-                    <div>
-                        <a class="recruit btn" href="/apply/<%= t._id %>">Apply</a>
-                        <a class="btn" href="/video/download/<%= t.consumer_vid._id %>">Download</a>
+        <br>
+        <div>
+            <form method="GET" action="/show" enctype="multipart/form-data"><button> View hidden video</button>
+            <!-- <input type="file" name="file" required> -->
+   
+    <div>  
+           <!-- <div class="transactions">
+            <transactions && transactions.forEach(t => { %>
+                <div onclick="window.location.href='<- user.uid %>/transaction/<- t._id %>'">
+                    <div class="name"><= t.name %></div>
+                    <div class="name"><= t.description %></div>
+
+                    <div> 
+                        <a class="recruit btn" href="/apply/< t._id %>">Apply</a>
+                        <a class="btn" href="/video/download/< t.consumer_vid._id %>">Download</a>
+                        <a href="recruit btn" href="">Delete</a>
                     </div>
                 </div> 
-            <% }) %>
-        </div>
+            < }) %> 
+        </div>  -->
+    </div>
+    
+         </div>
+
+        <!-- <div class="transactions">
+            <% transactions && transactions.forEach(t => { %>
+                <div onclick="window.location.href='<%- user.uid %>/transaction/<%- t._id %>'">
+                    <div class="name"><%= t.name %></div>
+                    <div class="name"><%= t.description %></div>
+                   
+
+                    <div> 
+                        <a class="recruit btn" href="/apply/< t._id %>">Apply</a>
+                        <a class="btn" href="/video/download/< t.consumer_vid._id %>">Download</a>
+                        <a href="recruit btn" href="">Delete</a>
+                    </div>
+                </div> 
+            <% }) %> 
+        </div> -->
     </div>
 
     <script>
@@ -73,7 +189,7 @@
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> 
 </body>
 
 </html>

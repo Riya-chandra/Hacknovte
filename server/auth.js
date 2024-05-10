@@ -32,7 +32,14 @@ function init() {
     });
 }
 
-function getGlobalClient() { return GLOBAL_OAUTH_CLIENT  }
+function getGlobalClient() {
+    return GLOBAL_OAUTH_CLIENT;
+}
+
+function getCredentials() {
+    return CREDENTIALS;
+}
+
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -109,6 +116,11 @@ function getCredentials()  {
 }
 
 init()
+
+
+
+
+
 
 module.exports = {
     CREDENTIALS, getCredentials, getGlobalClient, authorize, getAuthUrl, handleAuthCode, fetchUserInfo, fetchUserInfoAsync
