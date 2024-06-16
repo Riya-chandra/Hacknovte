@@ -35,13 +35,13 @@ He can directly upload the video in your Youtube channel using Title, Tags, Desc
 Our server will upload the video in your channel using YoutubeAPI.
 So it's Safe!
 <div align="center">
-<img src="C:\Users\riyac\OneDrive\Pictures\Screenshots" width="60%"></div>
+<img src="(https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/eec38648-f14c-4476-b42c-70eee125f692)" width="60%"></div>
 <br>
 <div align="center">
-<img " width="60%"></div>
+<img src="(https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/520e5165-cace-4143-b5cf-248819bf9041)" width="60%"></div>
 <br>
 <div align="center">
-<img src="" width="60%"></div>
+<img src="(https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/721e0661-f92a-44be-90d9-a3c7f8dfd963)" width="60%"></div>
 
 ## About us 💜
 We are a platform that ensures security and facilitates access to one's YouTube channel that involves combining authentication, authorization, and management features to provide a secure and user-friendly experience for Youtube channel owners.
