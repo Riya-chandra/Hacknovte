@@ -35,13 +35,18 @@ He can directly upload the video in your Youtube channel using Title, Tags, Desc
 Our server will upload the video in your channel using YoutubeAPI.
 So it's Safe!
 <div align="center">
-<img src="(https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/eec38648-f14c-4476-b42c-70eee125f692)" width="60%"></div>
+<img src="https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/eec38648-f14c-4476-b42c-70eee125f692" width="60%"></div>
+<br>
 <br>
 <div align="center">
-<img src="(https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/520e5165-cace-4143-b5cf-248819bf9041)" width="60%"></div>
+<img src="https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/f7987de3-bc5c-4f3b-a7fe-8987e8be9fe4 " width="60%"></div>
+
+
+<br>
 <br>
 <div align="center">
-<img src="(https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/721e0661-f92a-44be-90d9-a3c7f8dfd963)" width="60%"></div>
+<img src="https://github.com/Riya-chandra/Utube-Uploader/assets/136116667/2aa2a445-c864-474c-8d05-f28cffffdad8 " width="60%"></div>
+
 
 ## About us 💜
 We are a platform that ensures security and facilitates access to one's YouTube channel that involves combining authentication, authorization, and management features to provide a secure and user-friendly experience for Youtube channel owners.
@@ -52,10 +57,12 @@ We are a platform that ensures security and facilitates access to one's YouTube 
 3. The service provider choose,sets the thumbnail,Title, Description etc as per their words and uploads the video from our website to directly in your channel.
 4. One you Sign up your sign in credentials will be stored in our database.
 5. After that you can sign in with google easily.
-6. AI integrating for randering the thumbnails and hastags
 
+<br> 
 <div align="center">
 <img src="https://onymos.com/wp-content/uploads/2020/10/google-signin-button.png" width="50%"></div>
+
+
 
 
 ## Use ⚙️
@@ -74,10 +81,10 @@ Creating this website was not really easy for us.We faced quite a few complicati
 
 ## Upcoming Modifications to be added:
 - [x] 1. We will properly integrate YoutubeAPI using token recieved through Google OAuth2.0. 
-- [ ] 2. We have planned for another layer for protection and security to our consumers(Youtuber). In due time,we are going to modify our platform in such a way such that the consumer get a option to approve         the upload after the service provider(Video editor) uploads the video to our website. The consumer gets a pop up in his/her dashboard, where he/she can see the Video, Title, Description, Tags and            make sure it is the desired video and infos are correct. Only then the video gets uploaded from our server.
+- [ ] 2. We have planned for another layer for protection and security to our consumers(Youtuber). In due time,we are going to modify our platform in such a way such that the consumer get a option to approve the upload after the service provider(Video editor) uploads the video to our website. The consumer gets a pop up in his/her dashboard, where he/she can see the Video, Title, Description, Tags and  make sure it is the desired video and infos are correct. Only then the video gets uploaded from our server.
 - [ ] 3. Improve UI and UX
 - [ ] 4. Different UI for Clients and freelancer
-- [ ] 5.Integrating 
+- [ ] 5.Integrating AI for rendering thumnails and hashtags
   
 ## Tech Stack
 ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
